@@ -73,16 +73,7 @@ namespace ExamTemperatureMonitoring
         {
             try
             {
-                if (tbTempMin.Text != null || tbTempMin.Text != "" || tbTimeMin.Text != null || tbTimeMin.Text != "")
-                { 
-                    tbTempMin.Text = "0"; tbTimeMin.Text = "0"; 
-                }
-                else if (tbTempMax.Text != null || tbTempMax.Text != "" || tbTimeMax.Text != null || tbTimeMax.Text != "") 
-                {
-                    tbTempMax.Text = "0"; tbTimeMax.Text = "0"; 
-                }
-
-                if    (tbTempMin.Text != null || tbTempMin.Text != "" || tbTimeMin.Text != null || tbTimeMin.Text != ""
+                if (tbTempMin.Text != null || tbTempMin.Text != "" || tbTimeMin.Text != null || tbTimeMin.Text != ""
                     || tbTempMax.Text != null || tbTempMax.Text != "" || tbTimeMax.Text != null || tbTimeMax.Text != "")
                 {
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
