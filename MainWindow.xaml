@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamTemperatureMonitoring"
         mc:Ignorable="d"
-        Title="MainWindow" Height="489" Width="806">
+        Title="MainWindow" Height="489" Width="1045">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -23,33 +23,32 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="407*"/>
-            <ColumnDefinition Width="283*"/>
-            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="384*"/>
+            <ColumnDefinition Width="512*"/>
+            <ColumnDefinition Width="58*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tbFishName" Grid.Column="1" Height="21" Margin="134,26,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Семга" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92" FontFamily="Cascadia Mono"/>
-        <Label Grid.Column="1" Content="Вид рыбы" HorizontalAlignment="Left" Height="27" Margin="44,26,0,0" Grid.Row="2" VerticalAlignment="Top" Width="69" FontFamily="Cascadia Mono"/>
-        <Label Grid.Column="1" Content="MAX" HorizontalAlignment="Left" Height="31" Margin="68,99,0,0" Grid.Row="2" VerticalAlignment="Top" Width="68" FontFamily="Cascadia Mono"/>
-        <Label Grid.Column="1" Content="MIN" HorizontalAlignment="Left" Height="31" Margin="68,148,0,0" Grid.Row="2" VerticalAlignment="Top" Width="68" FontFamily="Cascadia Mono"/>
-        <TextBox x:Name="tbTempMax" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="141,103,0,0" Grid.Row="2" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="48" TextAlignment="Center" FontFamily="Cascadia Mono"/>
-        <TextBox x:Name="tbTempMin" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="141,152,0,0" Grid.Row="2" TextWrapping="Wrap" Text="-3 " VerticalAlignment="Top" Width="48" TextAlignment="Center" FontFamily="Cascadia Mono"/>
-        <TextBox x:Name="tbTimeMax" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="230,103,0,0" Grid.Row="2" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="49" TextAlignment="Center" FontFamily="Cascadia Mono"/>
-        <TextBox x:Name="tbTimeMin" Grid.Column="1" HorizontalAlignment="Left" Height="27" Margin="230,152,0,0" Grid.Row="2" TextWrapping="Wrap" Text="60" VerticalAlignment="Top" Width="50" TextAlignment="Center" FontFamily="Cascadia Mono"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="47,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" TextAlignment="Center" FontFamily="Cascadia Mono"><Run FontWeight="Bold" Text="Введите время и температуру или"/><LineBreak/><Run FontWeight="Bold" Text=" откройте текстовой файл"/></TextBlock>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="17" TextWrapping="Wrap" VerticalAlignment="Center" Width="296" TextAlignment="Center" Grid.Row="1" FontFamily="Cascadia Mono" Margin="32,0,0,0"><Run FontWeight="Bold" Text="Введите вид, время и температуру"/></TextBlock>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="125,64,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Center" FontFamily="Cascadia Mono"><Run Text="температура"/><Run Text=" "/><LineBreak/><Run Text="°C"/></TextBlock>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="215,64,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" TextAlignment="Center" RenderTransformOrigin="0.516,0.111" FontFamily="Cascadia Mono"><Run Language="ru-ru" Text="допустимое время"/></TextBlock>
-        <Button x:Name="btnReport" Grid.Column="1" Content="Отчет" HorizontalAlignment="Left" Height="23" Grid.Row="5" VerticalAlignment="Center" Width="78" Margin="141,0,0,0" Background="#FF43C734" Foreground="White" FontFamily="Cascadia Mono" Click="btnReport_Click"/>
-        <Button x:Name="btnOpen" Grid.Column="1" Content="Открыть" HorizontalAlignment="Left" Height="20" Margin="299,26,0,0" Grid.Row="3" VerticalAlignment="Top" Width="68" Foreground="White" Background="#FF0078C8" FontFamily="Cascadia Mono" Click="btnOpen_Click"/>
-        <TextBlock HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" FontFamily="Cascadia Mono" Grid.Column="1"><Run Language="ru-ru" Text="Дата и время"/></TextBlock>
-        <TextBox x:Name="tbStartTime" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="102,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="12.06.2022 12:23" VerticalAlignment="Top" Width="123" TextAlignment="Center" FontFamily="Cascadia Mono"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="10,35,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" FontFamily="Cascadia Mono"><Run Language="ru-ru" Text="Температура"/></TextBlock>
-        <TextBox x:Name="tbData" Grid.Column="1" Height="17" Margin="101,35,0,0" Grid.Row="4" TextWrapping="Wrap" Text="1 2 3 3 4 3 5 4" VerticalAlignment="Top" TextAlignment="Left" HorizontalAlignment="Left" Width="174" FontFamily="Cascadia Mono"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Height="17" TextWrapping="Wrap" VerticalAlignment="Center" Width="296" TextAlignment="Center" Grid.Row="1" FontFamily="Cascadia Mono" Margin="32,0,0,0"><Run FontWeight="Bold" Text="Введите вид, время и температуру"/></TextBlock>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Height="17" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" TextAlignment="Center" Grid.Row="1" FontFamily="Cascadia Mono" Margin="0,7,0,0"><Run FontWeight="Bold" Language="ru-ru" Text="Вывод нарушений"/></TextBlock>
-        <TextBox Grid.Column="2" HorizontalAlignment="Center" Height="309" Grid.RowSpan="3" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="263" BorderBrush="Black" Foreground="Black" IsEnabled="False"/>
-        <Button x:Name="btnReport_Copy" Grid.Column="2" Content="Сохранить" HorizontalAlignment="Center" Height="23" Grid.Row="5" VerticalAlignment="Center" Width="78" Background="#FF43C734" Foreground="White" FontFamily="Cascadia Mono" Click="btnReport_Copy_Click"/>
+        <TextBox x:Name="tbFishName" Grid.Column="1" Height="21" Margin="134,26,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Семга" VerticalAlignment="Top" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="92"/>
+        <Label Grid.Column="1" Content="Вид рыбы" Height="27" Margin="44,26,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="69"/>
+        <Label Grid.Column="1" Content="MAX" Height="31" Margin="68,99,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="68"/>
+        <Label Grid.Column="1" Content="MIN" Height="31" Margin="68,148,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="68"/>
+        <TextBox x:Name="tbTempMax" Grid.Column="1" Height="27" Margin="141,103,0,0" Grid.Row="2" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="48"/>
+        <TextBox x:Name="tbTempMin" Grid.Column="1" Height="27" Margin="141,152,0,0" Grid.Row="2" TextWrapping="Wrap" Text="-3 " VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="48"/>
+        <TextBox x:Name="tbTimeMax" Grid.Column="1" Height="27" Margin="230,103,0,0" Grid.Row="2" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="49"/>
+        <TextBox x:Name="tbTimeMin" Grid.Column="1" Height="27" Margin="230,152,0,0" Grid.Row="2" TextWrapping="Wrap" Text="60" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="50"/>
+        <TextBlock Grid.Column="1" Height="31" Margin="54,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="276"><Run FontWeight="Bold" Text="Введите время и температуру или"/><LineBreak/><Run FontWeight="Bold" Text=" откройте текстовой файл"/></TextBlock>
+        <TextBlock Grid.Column="1" Height="17" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Grid.Row="1" FontFamily="Cascadia Mono" Margin="32,0,0,0" HorizontalAlignment="Left" Width="296"><Run FontWeight="Bold" Text="Введите вид, время и температуру"/></TextBlock>
+        <TextBlock Grid.Column="1" Height="34" Margin="125,64,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="80"><Run Text="температура"/><Run Text=" "/><LineBreak/><Run Text="°C"/></TextBlock>
+        <TextBlock Grid.Column="1" Height="34" Margin="215,64,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" RenderTransformOrigin="0.516,0.111" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="80"><Run Language="ru-ru" Text="допустимое время"/></TextBlock>
+        <Button x:Name="btnReport" Grid.Column="1" Content="Отчет" Height="23" Grid.Row="5" VerticalAlignment="Center" Margin="141,0,0,0" Background="#FF43C734" Foreground="White" FontFamily="Cascadia Mono" Click="btnReport_Click" HorizontalAlignment="Left" Width="78"/>
+        <Button x:Name="btnOpen" Grid.Column="1" Content="Открыть" Height="20" Margin="288,7,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="White" Background="#FF0078C8" FontFamily="Cascadia Mono" Click="btnOpen_Click" HorizontalAlignment="Left" Width="68"/>
+        <TextBlock Height="17" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Cascadia Mono" Grid.Column="1" HorizontalAlignment="Left" Width="86"><Run Language="ru-ru" Text="Дата и время"/></TextBlock>
+        <TextBox x:Name="tbStartTime" Grid.Column="1" Height="17" Margin="102,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="12.06.2022 12:23" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="123"/>
+        <TextBlock Grid.Column="1" Height="17" Margin="10,35,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="80"><Run Language="ru-ru" Text="Температура"/></TextBlock>
+        <TextBox x:Name="tbData" Grid.Column="1" Height="17" Margin="105,35,0,0" Grid.Row="4" TextWrapping="Wrap" Text="1 2 3 3 4 3 5 4 2 1 1 1 1 0 -1 -2 -2 -3 -4 -4 -5 -5 -4 -4 -4 -3" VerticalAlignment="Top" TextAlignment="Left" FontFamily="Cascadia Mono" HorizontalAlignment="Left" Width="174"/>
+        <TextBlock Grid.Column="2" Height="17" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Grid.Row="1" FontFamily="Cascadia Mono" Margin="140,7,0,0" HorizontalAlignment="Left" Width="232"><Run FontWeight="Bold" Language="ru-ru" Text="Вывод нарушений"/></TextBlock>
+        <TextBox x:Name="tbResult" Grid.Column="2" Height="309" Grid.RowSpan="3" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" BorderBrush="Black" Foreground="Black" IsEnabled="False" Margin="27,0,27,0"/>
+        <Button x:Name="btnReport_Copy" Grid.Column="2" Content="Сохранить" Height="23" Grid.Row="5" VerticalAlignment="Center" Background="#FF43C734" Foreground="White" FontFamily="Cascadia Mono" Click="btnReport_Copy_Click" Margin="217,0,0,0" HorizontalAlignment="Left" Width="78"/>
 
     </Grid>
 </Window>

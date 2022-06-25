@@ -77,13 +77,15 @@ namespace ExamTemperatureMonitoring
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
                                                      Convert.ToInt32(tbTempMin.Text), Convert.ToInt32(tbTimeMin.Text),
                                                      tbData.Text, tbStartTime.Text);
-                    report.Pursing();
+                    string result = report.Pursing();
+                    tbResult.Text = result;
                 }
                 else 
                 {
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
                                                      tbData.Text, tbStartTime.Text);
-                    report.Pursing();
+                    string result = report.Pursing();
+                    tbResult.Text = result;
                 }
             }
             catch 
