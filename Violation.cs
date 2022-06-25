@@ -26,22 +26,6 @@ namespace ExamTemperatureMonitoring
             this.startTime = startTime;
         }
 
-        public Violation(string fishName, int tempMax, int time1, string data, string startTime, bool b)
-        {
-            this.tempMax = tempMax;
-            this.time1 = time1;
-            this.data = data;
-            this.startTime = startTime;
-        }
-
-        public Violation(string fishName, int tempMin, int time2, string data, string startTime)
-        {
-            this.tempMax = tempMin;
-            this.time1 = time2;
-            this.data = data;
-            this.startTime = startTime;
-        }
-
         public string Pursing() 
         {
             string result = "     Время                Факт     Норма     Отклонение от нормы\n\n";
@@ -49,7 +33,7 @@ namespace ExamTemperatureMonitoring
             int violationTimeMax = 0;
             string dateTime = startTime + ":00";
 
-            if (tempMin != 0 || tempMax != 0)
+            if (tempMin != 0 && time2 !=0 || tempMax != 0 && time1 != 0)
             {
                 List<int> temperatures = new List<int>();
 
@@ -87,7 +71,7 @@ namespace ExamTemperatureMonitoring
                 {
                     if (temperature < tempMin)
                     {
-                        result += $"      {dateTime}      {temperature}      {tempMin}       " + $"{tempMin - temperature}\n";
+                        result += $"      {dateTime}      {temperature}      {tempMax}       " + $"{tempMin - temperature}\n";
                         dateTime = DateTime.Parse(startTime).AddMinutes(10).ToString();
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
@@ -110,7 +94,7 @@ namespace ExamTemperatureMonitoring
                 {
                     if (temperature < tempMin)
                     {
-                        result += $"      {dateTime}      {temperature}      {tempMax}       " + $"{temperature - tempMax}\n";
+                        result += $"      {dateTime}      {temperature}      {tempMin}       " + $"{temperature - tempMax}\n";
                         dateTime = DateTime.Parse(startTime).AddMinutes(10).ToString();
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
