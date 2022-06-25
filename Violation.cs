@@ -11,8 +11,8 @@ namespace ExamTemperatureMonitoring
         private string fishName;
         private int tempMax;
         private int time1;
-        private int tempMin = 0;
-        private int time2 = 0;
+        private int tempMin;
+        private int time2;
         private string data;
         private string startTime = "";
 

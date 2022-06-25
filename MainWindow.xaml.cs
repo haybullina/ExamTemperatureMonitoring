@@ -21,7 +21,6 @@ namespace ExamTemperatureMonitoring
     /// </summary>
     public partial class MainWindow : Window
     {
-        string result;
         public MainWindow()
         {
             InitializeComponent();
@@ -66,7 +65,7 @@ namespace ExamTemperatureMonitoring
             {
                 // Save document
                 string filename = dlg.FileName;
-                File.WriteAllText(filename, this.result);
+                File.WriteAllText(filename, tbResult.Text);
             }
         }
 
@@ -89,8 +88,8 @@ namespace ExamTemperatureMonitoring
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
                                                      Convert.ToInt32(tbTempMin.Text), Convert.ToInt32(tbTimeMin.Text),
                                                      tbData.Text, tbStartTime.Text);
-                    result = report.Pursing();
-                    tbResult.Text = result;
+
+                    tbResult.Text = report.Pursing();
                 }
             }
             catch 
