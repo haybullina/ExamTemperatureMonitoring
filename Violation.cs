@@ -48,7 +48,7 @@ namespace ExamTemperatureMonitoring
                     if (temperature > tempMax || temperature < tempMin)
                     {
                         result += $"{dateTime}      {temperature}          {(temperature < tempMin ? tempMin : tempMax)}                    " +
-                            $"{((temperature < tempMin ? tempMin : tempMax) == tempMin ? (temperature - tempMin) : (tempMax - Math.Abs(temperature)))}\n";
+                            $"{((temperature < tempMin ? tempMin : tempMax) == tempMin ? (Math.Abs(temperature) - Math.Abs(tempMin)) : (Math.Abs(tempMax) - Math.Abs(temperature)))}\n";
                         dateTime = DateTime.Parse(dateTime).AddMinutes(10).ToString();
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
@@ -71,7 +71,7 @@ namespace ExamTemperatureMonitoring
                 {
                     if (temperature < tempMin)
                     {
-                        result += $"      {dateTime}      {temperature}      {tempMax}       " + $"{tempMin - temperature}\n";
+                        result += $"      {dateTime}      {temperature}      {tempMax}       " + $"{Math.Abs(tempMin) - Math.Abs(temperature)}\n";
                         dateTime = DateTime.Parse(dateTime).AddMinutes(10).ToString(); ;
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
@@ -94,7 +94,7 @@ namespace ExamTemperatureMonitoring
                 {
                     if (temperature < tempMin)
                     {
-                        result += $"      {dateTime}      {temperature}      {tempMin}       " + $"{temperature - tempMax}\n";
+                        result += $"      {dateTime}      {temperature}      {tempMin}       " + $"{Math.Abs(temperature) - Math.Abs(tempMax)}\n";
                         dateTime = DateTime.Parse(dateTime).AddMinutes(10).ToString();
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
