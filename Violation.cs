@@ -26,7 +26,7 @@ namespace ExamTemperatureMonitoring
             this.startTime = startTime;
         }
 
-        public Violation(string fishName, int tempMax, int time1, string data, string startTime)
+        public Violation(string fishName, int tempMax, int time1, string data, string startTime, bool b)
         {
             this.tempMax = tempMax;
             this.time1 = time1;
@@ -34,14 +34,22 @@ namespace ExamTemperatureMonitoring
             this.startTime = startTime;
         }
 
+        public Violation(string fishName, int tempMin, int time2, string data, string startTime)
+        {
+            this.tempMax = tempMin;
+            this.time1 = time2;
+            this.data = data;
+            this.startTime = startTime;
+        }
+
         public string Pursing() 
         {
-            string result = "     Время         Факт      Норма       Отклонение от нормы\n";
+            string result = "     Время                Факт     Норма     Отклонение от нормы\n\n";
             int violationTimeMin = 0;
             int violationTimeMax = 0;
-            string dateTime = "";
+            string dateTime = startTime + ":00";
 
-            if (tempMin != 0 || time2 != 0)
+            if (tempMin != 0 || tempMax != 0)
             {
                 List<int> temperatures = new List<int>();
 
@@ -55,8 +63,8 @@ namespace ExamTemperatureMonitoring
                 {
                     if (temperature > tempMax || temperature < tempMin)
                     {
-                        result += $"      {dateTime}      {temperature}      {(temperature < tempMin ? tempMin : tempMax)}       " +
-                            $"{((temperature < tempMin ? tempMin : tempMax) == tempMin ? (tempMin - temperature) : (tempMax - temperature))}\n";
+                        result += $"{dateTime}      {temperature}          {(temperature < tempMin ? tempMin : tempMax)}                    " +
+                            $"{((temperature < tempMin ? tempMin : tempMax) == tempMin ? (temperature - tempMin) : (tempMax - temperature))}\n";
                         dateTime = DateTime.Parse(startTime).AddMinutes(10).ToString();
 
                         if (temperature < tempMin) { violationTimeMin += 10; }
@@ -65,7 +73,7 @@ namespace ExamTemperatureMonitoring
                 }
 
             }
-            else 
+            else if (tempMin == 0 && time2 == 0)
             {
                 List<int> temperatures = new List<int>();
 
@@ -88,13 +96,36 @@ namespace ExamTemperatureMonitoring
                 }
             }
 
+            else if (tempMax == 0 && time1 == 0)
+            {
+                List<int> temperatures = new List<int>();
+
+                string[] temps = data.Split();
+                foreach (string temp in temps)
+                {
+                    temperatures.Add(Convert.ToInt32(temp));
+                }
+
+                foreach (int temperature in temperatures)
+                {
+                    if (temperature < tempMin)
+                    {
+                        result += $"      {dateTime}      {temperature}      {tempMax}       " + $"{temperature - tempMax}\n";
+                        dateTime = DateTime.Parse(startTime).AddMinutes(10).ToString();
+
+                        if (temperature < tempMin) { violationTimeMin += 10; }
+                        else { violationTimeMax += 10; }
+                    }
+                }
+            }
+
             if (violationTimeMin > time2) 
             {
-                result += $"Порог мин допустимой температуры превышен на {violationTimeMin} минут\n";
+                result += $"\nПорог мин допустимой температуры превышен на {violationTimeMin} минут\n";
             }
             else if (violationTimeMax < time1) 
             {
-                result += $"Порог макс допустимой температуры превышен на {violationTimeMax} минут";
+                result += $"\nПорог макс допустимой температуры превышен на {violationTimeMax} минут";
             }
 
             return result;

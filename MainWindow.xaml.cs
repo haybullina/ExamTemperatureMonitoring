@@ -21,6 +21,7 @@ namespace ExamTemperatureMonitoring
     /// </summary>
     public partial class MainWindow : Window
     {
+        string result;
         public MainWindow()
         {
             InitializeComponent();
@@ -65,6 +66,7 @@ namespace ExamTemperatureMonitoring
             {
                 // Save document
                 string filename = dlg.FileName;
+                File.WriteAllText(filename, this.result);
             }
         }
 
@@ -72,19 +74,27 @@ namespace ExamTemperatureMonitoring
         {
             try
             {
-                if (tbTempMin.Text != null || tbTempMin.Text != "" || tbTimeMax.Text != null || tbTimeMax.Text != "")
+                if    (tbTempMin.Text != null || tbTempMin.Text != "" || tbTimeMin.Text != null || tbTimeMin.Text != ""
+                    || tbTempMax.Text != null || tbTempMax.Text != "" || tbTimeMax.Text != null || tbTimeMax.Text != "")
                 {
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
                                                      Convert.ToInt32(tbTempMin.Text), Convert.ToInt32(tbTimeMin.Text),
                                                      tbData.Text, tbStartTime.Text);
-                    string result = report.Pursing();
+                    result = report.Pursing();
                     tbResult.Text = result;
                 }
-                else 
+                else if ((tbTempMin.Text == null || tbTempMin.Text == "") && (tbTimeMin.Text == null || tbTimeMin.Text == ""))
+                {
+                    Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
+                                                     tbData.Text, tbStartTime.Text, true);
+                    result = report.Pursing();
+                    tbResult.Text = result;
+                }
+                else if ((tbTempMax.Text == null || tbTempMax.Text == "") && (tbTimeMax.Text == null || tbTimeMax.Text == ""))
                 {
                     Violation report = new Violation(tbFishName.Text, Convert.ToInt32(tbTempMax.Text), Convert.ToInt32(tbTimeMax.Text),
                                                      tbData.Text, tbStartTime.Text);
-                    string result = report.Pursing();
+                    result = report.Pursing();
                     tbResult.Text = result;
                 }
             }
